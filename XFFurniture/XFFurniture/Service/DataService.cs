@@ -28,7 +28,7 @@ namespace XFFurniture.Service
                 },
                 new Category()
                 {
-                    description = "TV Stand",
+                    description = "Stand",
                     numberItems = 1815,
                     image = "tvstand.png",
                     backgroundColor = "#EAEDF6",

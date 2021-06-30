@@ -12,66 +12,77 @@
     mc:Ignorable="d">
 
     <ScrollView>
-        <Grid Margin="20,30,0,20" RowDefinitions="auto, auto, 95, auto, auto, *">
-            <Grid
+        <Grid Margin="20,30,0,20" RowDefinitions="auto, auto"
+			  ColumnDefinitions="135, auto">
+			<StackLayout Grid.Column="0">
+				<BoxView
+                        BackgroundColor="{StaticResource colorRedD60}"
+                        CornerRadius="3"
+                        HeightRequest="3"
+                        HorizontalOptions="Start"
+                        WidthRequest="25" />
+				<BoxView
+                        BackgroundColor="{StaticResource colorRedD60}"
+                        CornerRadius="3"
+                        HeightRequest="3"
+                        HorizontalOptions="Start"
+                        WidthRequest="5" />
+			</StackLayout>
+			<Grid
                 Grid.Row="0"
+				Grid.Column="1"
                 ColumnDefinitions="*, auto, auto"
                 ColumnSpacing="30">
-                <StackLayout Grid.Column="0">
-                    <BoxView
-                        BackgroundColor="{StaticResource colorBlack}"
-                        CornerRadius="3"
-                        HeightRequest="3"
-                        HorizontalOptions="Start"
-                        WidthRequest="25" />
-                    <BoxView
-                        BackgroundColor="{StaticResource colorBlack}"
-                        CornerRadius="3"
-                        HeightRequest="3"
-                        HorizontalOptions="Start"
-                        WidthRequest="25" />
-                </StackLayout>
-                <Path
-                    Grid.Column="1"
+				<!--This is the (now red) dotted line at the top tat you would use to open a menu..-->
+               
+				<!-- The Path is the magnifying glass.  Shape is made by defining points. -->
+				<Path
+					Grid.Column="1"
                     Data="M 13 3 C 7.4889971 3 3 7.4889971 3 13 C 3 18.511003 7.4889971 23 13 23 C 15.396508 23 17.597385 22.148986 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148986 17.597385 23 15.396508 23 13 C 23 7.4889971 18.511003 3 13 3 z M 13 5 C 17.430123 5 21 8.5698774 21 13 C 21 17.430123 17.430123 21 13 21 C 8.5698774 21 5 17.430123 5 13 C 5 8.5698774 8.5698774 5 13 5 z"
                     Fill="{StaticResource colorBlue232}"
                     HeightRequest="30"
                     WidthRequest="30" />
-                <Image
+                <!--The Cart-->
+				<Image
                     Grid.Column="2"
                     Margin="0,0,20,0"
                     Aspect="AspectFit"
                     HeightRequest="22"
                     Source="cart"
                     WidthRequest="22" />
+				<!--The little yellow dot-->
                 <BoxView
                     Grid.Column="2"
                     Margin="0,4,16,0"
-                    BackgroundColor="{StaticResource colorRedFF}"
+                    BackgroundColor="{StaticResource colorYellow99F4}"
                     CornerRadius="4"
                     HeightRequest="8"
                     HorizontalOptions="End"
                     VerticalOptions="Start"
                     WidthRequest="8" />
+				<!--Testing adding another dot in a different locatoin.  
+				    Note, you can add multiple items to the same grid location-->
+				<BoxView
+                    Grid.Column="2"
+                    Margin="0,4,16,0"
+                    BackgroundColor="{StaticResource colorRedD60}"
+                    CornerRadius="4"
+                    HeightRequest="8"
+                    HorizontalOptions="End"
+                    VerticalOptions="End"
+                    WidthRequest="8" />
             </Grid>
-            <StackLayout
-                Grid.Row="1"
-                Margin="0,20,0,0"
-                Spacing="0">
-                <Label
-                    FontFamily="FontMontserratBold"
-                    FontSize="30"
-                    Text="Explore" />
-                <Label FontSize="10" Text="category" />
-            </StackLayout>
+		
+          
             <CollectionView
                 x:Name="listCategories"
-                Grid.Row="2"
+                Grid.Row="1"
+				Grid.Column="0"
                 HorizontalScrollBarVisibility="Never"
                 ItemsSource="{Binding Categories}"
                 SelectionMode="None">
                 <CollectionView.ItemsLayout>
-                    <LinearItemsLayout ItemSpacing="5" Orientation="Horizontal" />
+                    <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -139,99 +150,12 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <Grid Grid.Row="3" Margin="{OnPlatform Android='0,20,20,20', iOS='0,20,20,0'}">
-                <pancake:PancakeView
-                    Padding="15"
-                    BackgroundColor="{StaticResource colorBlack27}"
-                    CornerRadius="10"
-                    HasShadow="False"
-                    VerticalOptions="Start">
-                    <Grid RowDefinitions="auto, auto, auto">
-                        <Label
-                            Grid.Row="0"
-                            FontSize="Micro"
-                            Text="Black Friday"
-                            TextColor="{StaticResource colorGrayC1}" />
-                        <Label
-                            Grid.Row="1"
-                            Margin="0,-8,0,2"
-                            VerticalTextAlignment="Center">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span
-                                        FontFamily="FontMontserratSemiBold"
-                                        FontSize="{OnPlatform Android='14',
-                                                              iOS='18'}"
-                                        Text="Sale Up to"
-                                        TextColor="{StaticResource colorWhite}" />
-                                    <Span
-                                        FontFamily="FontMontserratSemiBold"
-                                        FontSize="{OnPlatform Android='18',
-                                                              iOS='24'}"
-                                        Text=" 70% "
-                                        TextColor="{StaticResource colorYellowF4}" />
-                                    <Span
-                                        FontFamily="FontMontserratSemiBold"
-                                        FontSize="{OnPlatform Android='14',
-                                                              iOS='18'}"
-                                        Text="Off"
-                                        TextColor="{StaticResource colorWhite}" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <pancake:PancakeView
-                            Grid.Row="2"
-                            Padding="15,5"
-                            BackgroundColor="{StaticResource colorWhite}"
-                            CornerRadius="4"
-                            HasShadow="False"
-                            HorizontalOptions="Start"
-                            VerticalOptions="Center">
-                            <Label
-                                FontSize="8"
-                                HorizontalOptions="Center"
-                                Text="SHOP NOW"
-                                VerticalOptions="Center" />
-                        </pancake:PancakeView>
-                    </Grid>
-                </pancake:PancakeView>
-                <Image
-                    Margin="{OnPlatform Android='0,-45,-25,0',
-                                        iOS='0,-90,-60,0'}"
-                    HeightRequest="{OnPlatform Android='150',
-                                               iOS='235'}"
-                    HorizontalOptions="End"
-                    Source="chair"
-                    WidthRequest="{OnPlatform Android='200',
-                                              iOS='290'}" />
-            </Grid>
-            <Label
-                Grid.Row="4"
-                FontFamily="FontMontserratBold"
-                FontSize="{OnPlatform Android='18',
-                                      iOS='24'}"
-                Text="Best Seller" />
-            <Label
-                Grid.Row="4"
-                Margin="0,0,35,0"
-                FontFamily="FontMontserratMedium"
-                FontSize="{OnPlatform Android='10',
-                                      iOS='12'}"
-                HorizontalOptions="End"
-                Text="Show All"
-                TextColor="{StaticResource colorRedFF}"
-                VerticalTextAlignment="Center" />
-            <Polygon
-                Grid.Row="4"
-                Margin="{OnPlatform Android='0,-2,20,0',
-                                    iOS='0,0,20,0'}"
-                Fill="{StaticResource colorRedFF}"
-                HorizontalOptions="End"
-                Points="10,10 20,15 10,20"
-                StrokeThickness="1" />
+         
+         
             <CollectionView
                 x:Name="listProducts"
-                Grid.Row="5"
+                Grid.Row="1"
+				Grid.Column="1"
                 Margin="0,15,20,0"
                 ItemsSource="{Binding Products}"
                 VerticalScrollBarVisibility="Never">
@@ -258,7 +182,7 @@
                                         HorizontalOptions="End"
                                         Source="heart_outline"
                                         VerticalOptions="Start"
-                                        WidthRequest="18">
+                                        WidthRequest="18" Scale="2">
                                         <Image.Triggers>
                                             <DataTrigger
                                                 Binding="{Binding favorite}"
