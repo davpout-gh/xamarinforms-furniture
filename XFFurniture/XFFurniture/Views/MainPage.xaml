@@ -12,7 +12,8 @@
     mc:Ignorable="d">
 
     <ScrollView>
-        <Grid Margin="20,30,0,20" RowDefinitions="auto, auto"
+        <!--<Grid Margin="20,30,0,20" RowDefinitions="auto, auto"-->
+		<Grid Margin="10,30,0,20" RowDefinitions="auto, auto"
 			  ColumnDefinitions="135, auto">
 			<StackLayout Grid.Column="0">
 				<BoxView
@@ -26,7 +27,7 @@
                         CornerRadius="3"
                         HeightRequest="3"
                         HorizontalOptions="Start"
-                        WidthRequest="5" />
+                        WidthRequest="25" />
 			</StackLayout>
 			<Grid
                 Grid.Row="0"
@@ -90,14 +91,14 @@
                             <shadows:Shadows CornerRadius="38" Shades="{shadows:SingleShade BlurRadius=10, Offset='0,8', Opacity=0.5, Color={StaticResource colorYellow99F4}}">
                                 <pancake:PancakeView
                                     Margin="0,5,5,5"
-                                    Padding="8"
+                                    Padding="6"
                                     BackgroundColor="{Binding backgroundColor}"
                                     CornerRadius="34"
-                                    HeightRequest="50"
+                                    HeightRequest="65"
                                     VerticalOptions="Start"
-                                    WidthRequest="135">
+                                    WidthRequest="80">
                                     <Grid
-                                        ColumnDefinitions="auto, *"
+                                        RowDefinitions="auto, *"
                                         RowSpacing="0"
                                         VerticalOptions="Center">
                                         <BoxView
@@ -112,23 +113,16 @@
                                             Source="{Binding image}"
                                             VerticalOptions="CenterAndExpand"
                                             WidthRequest="34" />
-                                        <StackLayout
-                                            Grid.Row="0"
-                                            Grid.Column="1"
-                                            Margin="2,0,0,0"
-                                            Spacing="0"
-                                            VerticalOptions="Center">
+                                      
                                             <Label
+												Grid.Row="1"
+												HorizontalOptions="Center"
                                                 FontFamily="FontMontserratMedium"
-                                                FontSize="16"
+                                                FontSize="12"
                                                 Text="{Binding description}"
                                                 TextColor="{Binding textColor}"
                                                 VerticalOptions="Start" />
-                                            <Label
-                                                FontSize="9"
-                                                Text="{Binding numberItems, StringFormat='{0} items'}"
-                                                VerticalOptions="Start" />
-                                        </StackLayout>
+                                      
                                     </Grid>
                                     <pancake:PancakeView.GestureRecognizers>
                                         <TapGestureRecognizer
@@ -163,7 +157,7 @@
                     <GridItemsLayout
                         HorizontalItemSpacing="15"
                         Orientation="Vertical"
-                        Span="2"
+                        Span="7"
                         VerticalItemSpacing="15" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
@@ -194,29 +188,36 @@
                                     </Image>
                                     <pancake:PancakeView
                                         Padding="2,4"
-                                        BackgroundColor="{StaticResource colorRedFF}"
+                                        BackgroundColor="{StaticResource colorYellowF4}"
                                         CornerRadius="12,0,0,20"
                                         HasShadow="False"
                                         HeightRequest="20"
                                         HorizontalOptions="Start"
                                         VerticalOptions="Start"
                                         WidthRequest="30">
-                                        <Label HorizontalOptions="Center">
+
+										
+										<Label
+                                        
+                                        Margin="0,2,2,0"
+                                        FontFamily="FontMontserratSemiBold"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        LineBreakMode="TailTruncation"
+									    TextColor="{StaticResource colorWhite}" 
+                                        Text="{Binding discount, StringFormat='{0:N0}'}" />
+
+										<!--<Label HorizontalOptions="Center">
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span
                                                         FontFamily="FontMontserratSemiBold"
                                                         FontSize="8"
                                                         Text="{Binding discount, StringFormat='{0:N0}%'}"
-                                                        TextColor="{StaticResource colorWhite}" />
-                                                    <Span
-                                                        FontFamily="FontMontserratSemiBold"
-                                                        FontSize="8"
-                                                        Text="&#10;OFF"
-                                                        TextColor="{StaticResource colorWhite}" />
+                                                        TextColor="{StaticResource colorWhite}" />                                                    
                                                 </FormattedString>
                                             </Label.FormattedText>
-                                        </Label>
+                                        </Label>-->
                                         <pancake:PancakeView.Triggers>
                                             <DataTrigger
                                                 Binding="{Binding discount}"
